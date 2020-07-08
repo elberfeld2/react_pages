@@ -1,0 +1,31 @@
+name: ReactPages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: usando Node.js version-${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Instalando paquetes
+      run: npm install
+    - name: Actualizando paquetes
+      run: npm update
+    - name: ghp
+      run:  npm install -g ghp
+      
+    - name: Subir a pages
+      run: |
+        git config --global user.email ${{secrets.EMAIL}}
+        git config --global user.name ${{secrets.NAME}}
+        git remote set-url origin https://${{secrets.TOKEN}}@github.com/elberfeld2/React_Periodicos.git
+        npm run deploy

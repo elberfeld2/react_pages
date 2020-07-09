@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+ a:link { color: rgb(255, 254, 254); text-decoration: none; font-weight: bold; padding: 1em;}
+
+ a:visited { color: rgb(221, 220, 216); text-decoration: none; font-weight: bold; }
+
+ a:hover { color: rgb(71, 73, 71); text-decoration: underline; font-weight: bold; }
+
+ a:active { color: rgb(79, 79, 82); text-decoration: underline; font-weight: bold; }
